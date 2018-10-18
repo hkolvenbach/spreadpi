@@ -28,14 +28,20 @@ On Debian and derivatives::
 
     wget http://archive.raspbian.org/raspbian.public.key -O - | sudo apt-key add -
 
+Building on Ubuntu 16.04
+========================
+Ubuntu 16.04 has a bug that debootstrap does not work with armhf in the last version, 
+so you need to manually install an older version:
+
 Building
 ========
 To generate an image, run the `build.sh` script as root:
 
 ::
 
-    $ sudo ./build.sh
+    $ DEB_RELEASE=jessie sudo -E ./build.sh
     
+`DEB_RELEASE=stable` won't work, because it now points to `stretch`
 There are some environment variables that you can set to customize the build:
 
 `IMAGESIZE`

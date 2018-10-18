@@ -2,7 +2,7 @@
 
 # Exit on errors
 ORIG_DIR=$(pwd)
-set -e
+set -exo
 function print_info()
 {
     green='\e[0;32m'
@@ -341,9 +341,10 @@ done
 
 # Configure default mirror
 print_info "Writing $rootfs/apt/sources.list again, using non-local mirror..."
-echo "deb ${DEFAULT_DEB_MIRROR} ${DEB_RELEASE} main contrib non-free
-deb http://apt.diybookscanner.org/raspbian wheezy main
-" > "$rootfs/etc/apt/sources.list"
+echo "deb ${DEFAULT_DEB_MIRROR} ${DEB_RELEASE} main contrib non-free" > "$rootfs/etc/apt/sources.list"
+#echo "deb ${DEFAULT_DEB_MIRROR} ${DEB_RELEASE} main contrib non-free
+#deb http://apt.diybookscanner.org/raspbian wheezy main
+#" > "$rootfs/etc/apt/sources.list"
 
 # Clean up
 print_info "Cleaning up bootstrapped system"
